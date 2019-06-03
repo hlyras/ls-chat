@@ -85,7 +85,6 @@ section .container {
 
 table {
 	margin: auto;
-	border: 1px solid #ccc;
 }
 
 table tr td {
@@ -93,7 +92,6 @@ table tr td {
 	padding: 2px;
 	font-size: 10px;
 	word-break: break-all;
-	border: 1px solid #ccc;
 }
 
 table input, select, button {

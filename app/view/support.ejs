@@ -1,21 +1,26 @@
 <html>
  <head>
  <% include ./partials/head %>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+ <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+ <script src="/socket.io/socket.io.js"></script>
  </head>
  <body>
   <div class="container">
   <header>
    <a href="/"><img src="/images/favicon.png" class="favicon"></a>
   </header>
+  <span id="user-id" hidden><%= user.id %></span>
+  <span id="user-name" hidden><%= user.name %></span>
+  <span id="user-support" hidden><%= user.support %></span>
+  <span id="access-room" hidden><%= room %></span>
   <section>
-   <div class="container">
+   <div class="container chat-containner">
     <div class="box-1">
-     <strong>Bem vindo ao chat de suporte.</strong>
-     <span id="user-id" hidden><%= user.id %></span>
-     <span id="user-name" hidden><%= user.name %></span>
-     <span id="user-support" hidden><%= user.support %></span>
-     <span id="access-room" hidden><%= room %></span>
+      <form id="chat-frm">
+        <div class="box-1 chat-box" id="chat-box"></div>
+        <input type="text" class="chat-input" id="chat-message" maxlength="1000" autocomplete="off">
+        <button type="submit" class="chat-btn">Enviar</button>
+      </form>
     </div>
    </div>
   </section>

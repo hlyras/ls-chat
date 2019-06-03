@@ -17,7 +17,8 @@ const homeController = {
 		};
 		res.render('user/signup', { message: req.flash('signupMessage') });
 	},
-	logout: (req, res) => {
+	logout: async (req, res) => {
+		await User.supportDisconnect(req.user.id);
 		req.logout();
 		res.redirect('/');
 	},

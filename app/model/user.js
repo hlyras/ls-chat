@@ -61,4 +61,14 @@ User.supportDisconnect = (id) => {
 	return db(query);
 };
 
+User.saveMessage = (data, room) => {
+	let query = "INSERT INTO lfsdb.room"+room+" (user, message) VALUES ('"+data.user+"', '"+data.message+"');";
+	return db(query);
+};
+
+User.loadMessages = (room) => {
+	let query = "SELECT * FROM lfsdb.room"+room+";";
+	return db(query);
+};
+
 module.exports = User;

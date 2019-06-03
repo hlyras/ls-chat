@@ -1,0 +1,60 @@
+<html>
+	<head>
+        <% include ../partials/head %>
+	</head>
+	<body>
+		<header>
+			<a href="/"><img src="/images/favicon.png" class="favicon"></a>
+			<div>
+                <a href="/signup">Signup</a>
+    			| <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Logout</a>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+				<div class="box-2">
+                    <div class="menu-box">
+						<strong class="underline-title">Alterar privilégios de usuários</strong>
+						<span class="span-menu" id="user-list-btn">Listar usuários</span>
+                    </div>
+                    <br>
+                    <div id="main-user-div" style="display: none">
+                    	<table id="main-user-tbl"></table>
+                    	<br>
+                    	<button id="userPrevious" autocomplete="off" disabled>&lsaquo;&lsaquo;</button>
+	                    <span id="userPageNumber"></span>
+	                    <button id="userNext" autocomplete="off" disabled>&rsaquo;&rsaquo;</button>
+                    </div>
+                    <div class="box-1" id="show-user-box" style="display: none">
+                    </div>
+                </div>
+                <div class="box-2">
+					<strong class="underline-title">Usuários em contato com suporte.</strong>
+                    <table>
+                    	<tr>
+                    		<td>Nome</td>
+                    		<td>Username</td>
+                    		<td>Status</td>
+                    	</tr>
+                    	<% for(i in users){ %>
+                    	<% if(users[i].support=='connected'){ %>
+                		<form action='/admin/support' method='post'>
+	                    	<tr>
+	                    		<td hidden><input name="room" value="<%= users[i].id %>"></td>
+	                    		<td><%= users[i].name %></td>
+	                    		<td><%= users[i].username %></td>
+	                    		<td><%= users[i].support %></td>
+	                    		<td><button type='submit'>Entrar</button></td>
+	                    	</tr>
+                		</form>
+                    	<% } %>
+                    	<% } %>
+                    </table>
+                </div>
+			</div>
+		</section>
+	</body>
+	<footer>
+        <% include ../partials/footer %>
+	</footer>
+</html>

@@ -1,0 +1,81 @@
+<html>
+	<head>
+        <% include ../../partials/head %>
+	</head>
+	<body>
+		<header>
+			<a href="/"><img src="/images/favicon.png" class="favicon"></a>
+			<div>
+    			<a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Logout</a>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+				<div class="box-2">
+					<strong class="underline-title">Cadastro de produtos</strong>
+					<br>
+					<input type="number" class="btn-generic-big" id="product_cod" placeholder="Cód do produto" min="1" max="9999" autocomplete="off">
+					<select id="product_type" class="btn-generic-big" autocomplete="off">
+						<option value="">Tipo</option>
+						<option value="Colete">Colete</option>
+						<option value="Peça_mod">Peça modular</option>
+						<option value="Coldre">Coldre</option>
+						<option value="Bornal">Bornal</option>
+					</select>
+					<br>
+					<input type="text" class="btn-generic-big" id="product_name" placeholder="Nome do produto" autocomplete="off" maxlength="15">
+					<select id="product_color" class="btn-generic-big" autocomplete="off">
+						<option value="">Cor</option>
+						<option value="pt">Preto</option>
+						<option value="vd">Verde</option>
+						<option value="tan">Tan</option>
+						<option value="ptcamo">Preto camo</option>
+						<option value="vdcamo">Verde camo</option>
+					</select>
+					<br>
+					<select id="product_size" class="btn-generic-big" autocomplete="off">
+						<option value="">Tamanho</option>
+						<option value="ST">Sem tamanho</option>
+						<option value="PP">PP</option>
+						<option value="P">P</option>
+						<option value="M">M</option>
+						<option value="G">G</option>
+						<option value="GG">GG</option>
+					</select>
+					<input type="button" class="btn-generic-big" id="product-save-btn" value="Cadastrar">
+				</div>
+				<div class="box-2">
+					<strong class="underline-title">Produtos cadastrados</strong><br>
+					<select id="src_product_type" class="btn-generic-small" autocomplete="off">
+						<option value="">Tipo</option>
+						<option value="Colete">Colete</option>
+						<option value="Peça_mod">Peça modular</option>
+						<option value="Coldre">Coldre</option>
+						<option value="Bornal">Bornal</option>
+					</select>
+					<select id="src_product_color" class="btn-generic-small" autocomplete="off">
+						<option value="">Cor</option>
+						<option value="pt">Preto</option>
+						<option value="vd">Verde</option>
+						<option value="tan">Tan</option>
+						<option value="ptcamo">Preto camo</option>
+						<option value="vdcamo">Verde camo</option>
+					</select>
+					<input type="button" class="btn-generic-small" id="product-filter-btn" value="Filtrar">
+					<br><br>
+					<div id="main-product-div" style="display:none">
+						<table id="main-product-tbl"></table>
+						<br>
+						<button id="productPrevious" autocomplete="off" disabled>&lsaquo;&lsaquo;</button>
+	                    <span id="productPageNumber"></span>
+	                    <button id="productNext" autocomplete="off" disabled>&rsaquo;&rsaquo;</button>
+					</div>
+				</div>
+				<div class="box-1" id="show-product-box" style="display:none;"></div>
+			</div>
+		</section>
+	</body>
+	<footer>
+        <% include ../../partials/footer %>
+	</footer>
+</html>

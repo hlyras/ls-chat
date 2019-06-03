@@ -1,0 +1,27 @@
+<html>
+ <head>
+ <% include ./partials/head %>
+ </head>
+ <body>
+  <div class="container">
+  <header>
+   <a href="/"><img src="/images/favicon.png" class="favicon"></a>
+  </header>
+  <section>
+   <div class="container">
+    <div class="box-1">
+     <strong>Não encontrado. Verifique se a URL foi inserida corretamente.</strong>
+     <script>
+      setTimeout(() => {
+      window.location.href = "/";
+      },3000);
+     </script>
+    </div>
+   </div>
+  </section>
+  </div>
+ </body>
+ <footer>
+ <% include ./partials/footer %>
+ </footer>
+</html>

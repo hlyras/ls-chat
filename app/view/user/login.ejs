@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <div class="main">
+            <header>
+                <a href="/"><img src="/images/favicon.png" class="favicon"></a>
+            </header>
+            <section>
+                <div class="container">
+                    <div class="box-1">
+                        <form action="/user/login" method="post">
+                            <div class="menu-box">
+                                <h4 class="underline-title">Faça seu login</h4>
+                                <% if (message.length > 0) { %>
+                                    <div class="alert-msg"><%= message %></div>
+                                <% } %>
+                                <p>Username</p>
+                                <input type="text" class="btn-generic-menu-big" name="username" autocomplete="off">
+                                <p>Senha</p>
+                                <input type="password" class="btn-generic-menu-big" name="password" autocomplete="off">
+                                <button type="submit" class="btn-generic-menu-big">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+    
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+</html>

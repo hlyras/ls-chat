@@ -1,0 +1,29 @@
+<html>
+	<head>
+        <% include ../partials/head %>
+	</head>
+	<body>
+		<header>
+			<a href="/"><img src="/images/favicon.png" class="favicon"></a>
+			<div>
+    			<a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Logout</a>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+				<div class="box-2">
+                    <div class="menu-box">
+                        <strong class="underline-title">Ferramentas de automação</strong>
+                        <span class="span-menu" onclick="window.location.href='/factory/product'">Produtos</span>
+                        <span class="span-menu" onclick="window.location.href=''">Produção</span>
+                        <span class="span-menu" onclick="window.location.href=''">Estoque</span>
+                        <span class="span-menu" onclick="window.location.href=''">Vendas online</span>
+                    </div>
+                </div>
+			</div>
+		</section>
+	</body>
+	<footer>
+        <% include ../partials/footer %>
+	</footer>
+</html>

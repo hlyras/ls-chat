@@ -1,0 +1,120 @@
+<html>
+	<head>
+        <% include ../partials/head %>
+	</head>
+	<body>
+		<header>
+			<a href="/"><img src="/images/favicon.png" class="favicon"></a>
+			<div>
+    			<a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Logout</a>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+				<div id="show-user-box" class="box-2">
+					<h1 class='underline-title'>Bem vindo <%= user.name %></h1>
+					<table id="show-user-tbl" border='1'>
+						<tr>
+							<td>Id</td>
+							<td>Nome</td>
+							<td>Username</td>
+							<td>Profissão</td>
+							<td>E-mail</td>
+							<td>Nascimento</td>
+						</tr>
+						<tr>
+							<td id="src_user_id"><%= user.id %></td>
+							<td hidden><a id="user-show-btn"></a></td>
+							<td><%= user.name%></td>
+							<td><%= user.username%></td>
+							<td><%= user.job%></td>
+							<td><%= user.email%></td>
+							<td><%= user.birth%></td>
+						</tr>
+					</table>
+					<br>
+					<div class="menu-box">
+						<span class="span-menu underline-title" id="user-edit-btn">Atualizar</span>
+					</div>
+					<div class="box-1" id="user-edit-box" style="display:none">
+						<button class="btn-generic-small" id="user-editInfo-btn">Dados</button>
+						<button class="btn-generic-small" id="user-editPassword-btn">Senha</button>
+						<div class="box-1" id="user-editInfo-frm" style="display:none">
+							<div class="menu-box">
+								<h6 class="underline-title">Atualizar informações</h6><br>
+								<p>E-mail</p>
+								<input type="text" class="btn-generic-menu-big" id="email" onblur="validateEmail()">
+								<p class="underline-generic"></p>
+								<p>Nascimento</p>
+								<div>
+									<select class="btn-generic-date-day" name="day" id="day" autocomplete="off"></select>
+									<select class="btn-generic-date-month" name="month" id="month" autocomplete="off"></select>
+									<select class="btn-generic-date-year" name="year" id="year" autocomplete="off"></select>
+								</div>
+								<p class="underline-generic"></p>
+								<button class="btn-generic-menu-big" id="user-updateInfo-btn">Confirmar</button>
+							</div>
+						</div>
+						<div class="box-1" id="user-editPassword-frm" style="display:none">
+							<div class="menu-box" >
+								<h6 class="underline-title">Redefinir senha</h6><br>
+								Senha
+								<input type="password" class="btn-generic-menu-big" id="password" maxlength="45" autocomplete="off">
+								<p class="underline-generic"></p>
+								Confirmar senha
+								<input type="password" class="btn-generic-menu-big" id="confirmPassword" maxlength="45" autocomplete="off">
+								<p class="underline-generic"></p>
+								<button class="btn-generic-menu-big" id="user-updatePassword-btn">Confirmar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<footer>
+        <% include ../partials/footer %>
+	</footer>
+	<script>
+		function validateEmail() {
+			let field = document.getElementById('email').value;
+			userAdress = field.substring(0, field.indexOf("@"));
+			domain = field.substring(field.indexOf("@")+ 1, field.length);
+			 
+			if ((userAdress.length >=1) &&
+			    (domain.length >=3) && 
+			    (userAdress.search("@")==-1) && 
+			    (domain.search("@")==-1) &&
+			    (userAdress.search(" ")==-1) && 
+			    (domain.search(" ")==-1) &&
+			    (domain.search(".")!=-1) &&      
+			    (domain.indexOf(".") >=1)&& 
+			    (domain.lastIndexOf(".") < domain.length - 1)) {
+			} else{
+				alert("E-mail inválido");
+				document.getElementById('email').value = '';
+			};
+		};
+
+		function filldate(){
+			const Months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+			document.getElementById('day').innerHTML += "<option value=''>Dia</option>";
+			document.getElementById('month').innerHTML += "<option value=''>Mês</option>";
+			document.getElementById('year').innerHTML += "<option value=''>Ano</option>";
+
+			for(i=1;i<32;i++){
+				document.getElementById('day').innerHTML += "<option value="+i+">"+i+"</option>";
+			};
+
+			for(month of Months){
+				document.getElementById('month').innerHTML += "<option value="+month+">"+month+"</option>";
+			};
+
+			for(i=2019;i>1900;i--){
+				document.getElementById('year').innerHTML += "<option value="+i+">"+i+"</option>";
+			};
+		};
+		filldate();
+	</script>
+</html>

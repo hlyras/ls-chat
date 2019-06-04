@@ -1,6 +1,6 @@
 <html>
  <head>
- <% include ./partials/head %>
+ <% include ../partials/head %>
  <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
  <script src="/socket.io/socket.io.js"></script>
  </head>
@@ -14,11 +14,11 @@
   <span id="user-support" hidden><%= user.support %></span>
   <span id="access-room" hidden><%= room %></span>
   <section>
-    <% if(user.serviceDesk<1){ %>
+    <% if(serviceDesk>0){ %>
     <div class="box-1" id='serviceDesk-box'>
-      <h4 class='underline-generic'>Suporte entrará em breve na sala. Caso não seja possível aguardar abra um chamado e relate seu problema.</h4>
+      <h4 class='underline-generic'>Caso tenha solucionado o problema feche o chamado.</h4>
       <div class="menu-box">
-        <span class='span-menu' onclick="openServiceDesk()">Abrir chamado</span>
+        <span class='span-menu' onclick="closeServiceDesk()">Fechar chamado</span>
       </div>
     </div>
     <% } %>
@@ -35,7 +35,7 @@
   </div>
  </body>
  <footer>
- <% include ./partials/footer %>
+ <% include ../partials/footer %>
   <script src="/javascripts/sockets/support.js"></script>
  </footer>
 </html>

@@ -29,7 +29,6 @@ if(user.support == 'disconnected'){
 		socket.emit('joinRoom', user);
 	};
 	
-	
 	socket.on('connected', data => {
 		renderAlert(data)
   		chatBox.scrollTop = chatBox.scrollHeight;
@@ -39,6 +38,18 @@ if(user.support == 'disconnected'){
 		renderAlert(data)
   		chatBox.scrollTop = chatBox.scrollHeight;
 	});
+
+	function openServiceDesk(){
+		socket.emit('open service desk call');
+		alert('Chamado aberto, em breve seu chamado será respondido.');
+		document.getElementById('serviceDesk-box').style.display = 'none';
+	};
+
+	function closeServiceDesk(){
+		socket.emit('close service desk call');
+		alert('Chamado finalizado.');
+		document.getElementById('serviceDesk-box').style.display = 'none';
+	};
 
 	$('#chat-frm').submit((event) => {
 		event.preventDefault();

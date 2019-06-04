@@ -44,7 +44,7 @@ const adminController = {
 			return res.redirect('/login');
 		};
 
-		res.render('support', { user: req.user, room: req.body.room });
+		res.render('admin/support', { user: req.user, room: req.body.room, serviceDesk: req.body.serviceDesk });
 	}
 };
 

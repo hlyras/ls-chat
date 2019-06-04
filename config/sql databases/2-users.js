@@ -8,6 +8,7 @@ CREATE TABLE `lfsdb`.`users` (
   `password` VARCHAR(60) NOT NULL,
   `access` VARCHAR(3) NOT NULL DEFAULT 'aaa',
   `suport` VARCHAR(12) NOT NULL DEFAULT 'disconnected',
+  `serviceDesk` VARCHAR(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),

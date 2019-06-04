@@ -71,4 +71,14 @@ User.loadMessages = (room) => {
 	return db(query);
 };
 
+User.openServiceDeskCall = (id) => {
+	let query = "UPDATE lfsdb.users SET serviceDesk='1' WHERE id='"+id+"';";
+	return db(query);
+};
+
+User.closeServiceDeskCall = (room) => {
+	let query = "UPDATE lfsdb.users SET serviceDesk='0' WHERE id='"+room+"';";
+	return db(query);
+};
+
 module.exports = User;

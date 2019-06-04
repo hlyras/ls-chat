@@ -8,9 +8,7 @@ const adminController = {
 			return res.redirect('/login');
 		};
 
-		let users = await User.list();
-
-		res.render('admin/index', { users: users });
+		res.render('admin/index');
 	},
 	updateUserAccess: async (req, res) => {
 		if(!await userController.verifyAccess(req, res, ['prp','dvp'])){
@@ -44,7 +42,16 @@ const adminController = {
 			return res.redirect('/login');
 		};
 
-		res.render('admin/support', { user: req.user, room: req.body.room, serviceDesk: req.body.serviceDesk });
+		let users = await User.list();
+
+		res.render('admin/support/index', {users: users});
+	},
+	supportChat: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['prp','dvp','spt'])){
+			return res.redirect('/login');
+		};
+
+		res.render('admin/support/chat', { user: req.user, room: req.body.room, serviceDesk: req.body.serviceDesk });
 	}
 };
 

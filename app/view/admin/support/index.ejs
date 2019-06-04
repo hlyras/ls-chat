@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <% include ../../partials/head %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+  </head>
+  <body>
+    <header>
+      <a href="/"><img src="/images/favicon.png" class="favicon"></a>
+    </header>
+    <section>
+      <div class="container">
+        <div class="box-1">
+          <strong class="underline-title">Usuários com chamado aberto</strong>
+          <table>
+            <tr>
+              <td>Nome</td>
+              <td>Username</td>
+              <td>Status</td>
+            </tr>
+            <% for(i in users){ %>
+              <% if(users[i].serviceDesk=='opened'){ %>
+                <form action='/admin/supportChat' method='post'>
+                  <tr>
+                    <td hidden><input name="room" value="<%= users[i].id %>"></td>
+                    <td hidden><input name="serviceDesk" value="<%= users[i].serviceDesk %>"></td>
+                    <td><%= users[i].name %></td>
+                    <td><%= users[i].username %></td>
+                    <td><%= users[i].support %></td>
+                    <td><button class='btn-table' type='submit'>Entrar</button></td>
+                  </tr>
+                </form>
+              <% } %>
+            <% } %>
+          </table>
+        </div>
+
+        <div class="box-1">
+          <strong class="underline-title">Acessar chat privado</strong>
+          <div class="menu-box">
+            <span class="span-menu" id="chat-list-btn">Listar usuários</span>
+          </div>
+          <div class="box-1" id='chat-list-box' style="display: none">
+            <table>
+              <tr>
+                <td>Nome</td>
+                <td>Username</td>
+                <td>Status</td>
+              </tr>
+              <% for(i in users){ %>
+                <form action='/admin/supportChat' method='post'>
+                  <tr>
+                    <td hidden><input name="room" value="<%= users[i].id %>"></td>
+                    <td hidden><input name="serviceDesk" value="<%= users[i].serviceDesk %>"></td>
+                    <td><%= users[i].name %></td>
+                    <td><%= users[i].username %></td>
+                    <td><%= users[i].support %></td>
+                    <td><button class='btn-table' type='submit'>Entrar</button></td>
+                  </tr>
+                </form>
+              <% } %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <footer>
+  <% include ../../partials/footer %>
+  </footer>
+</html>

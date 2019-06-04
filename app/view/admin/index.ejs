@@ -28,56 +28,10 @@
           <div class="box-1" id="show-user-box" style="display: none"></div>
         </div>
         <div class="box-2">
-          <strong class="underline-title">Usuários em contato com suporte</strong>
-          <table>
-            <tr>
-              <td>Nome</td>
-              <td>Username</td>
-              <td>Status</td>
-            </tr>
-            <% for(i in users){ %>
-            <% if(users[i].serviceDesk=='opened'){ %>
-            <form action='/admin/support' method='post'>
-              <tr>
-                <td hidden><input name="room" value="<%= users[i].id %>"></td>
-                <td hidden><input name="serviceDesk" value="<%= users[i].serviceDesk %>"></td>
-                <td><%= users[i].name %></td>
-                <td><%= users[i].username %></td>
-                <td><%= users[i].support %></td>
-                <td><button class='btn-table' type='submit'>Entrar</button></td>
-              </tr>
-            </form>
-            <% } %>
-          <% } %>
-          </table>
-        </div>
-      </div>
-      <div class="box-2">
-        <strong class="underline-title">Acessar chat privado</strong>
-        <div class="menu-box">
-          <span class="span-menu" id="chat-list-btn">Listar usuários</span>
-        </div>
-        <div class="box-1" id='chat-list-box' style="display: none">
-          <table>
-            <tr>
-              <td>Nome</td>
-              <td>Username</td>
-              <td>Status</td>
-            </tr>
-          <% for(i in users){ %>
-            <form action='/admin/support' method='post'>
-              <tr>
-                <td hidden><input name="room" value="<%= users[i].id %>"></td>
-                <td hidden><input name="serviceDesk" value="<%= users[i].serviceDesk %>"></td>
-                <td><%= users[i].name %></td>
-                <td><%= users[i].username %></td>
-                <td><%= users[i].support %></td>
-                <td><button class='btn-table' type='submit'>Entrar</button></td>
-              </tr>
-            </form>
-          <% } %>
-          </table>
-        </div>
+          <div class="menu-box">
+            <strong class="underline-title">Suporte</strong>
+            <span class="span-menu" onclick="window.location.href='/admin/support'">Acessar</span>
+          </div>
         </div>
       </div>
     </section>

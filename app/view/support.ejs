@@ -14,7 +14,7 @@
   <span id="user-support" hidden><%= user.support %></span>
   <span id="access-room" hidden><%= room %></span>
   <section>
-    <% if(user.serviceDesk<1){ %>
+    <% if(user.serviceDesk=='closed'){ %>
     <div class="box-1" id='serviceDesk-box'>
       <h4 class='underline-generic'>Suporte entrará em breve na sala. Caso não seja possível aguardar abra um chamado e relate seu problema.</h4>
       <div class="menu-box">

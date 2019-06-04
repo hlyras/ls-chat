@@ -1,6 +1,9 @@
 $(function(){
 	$("#user-list-btn").on('click', function(){
 		let btn = $(this);btn.attr('disabled', true);
+		if(document.getElementById('main-user-div').style.display == 'block'){
+			return document.getElementById('main-user-div').style.display = 'none';
+		};
 		$.ajax({
 			url: '/user/list',
 			method: 'get',
@@ -150,5 +153,14 @@ $(function(){
 				btn.attr('disabled', false);
 			}
 		});
+	});
+
+	$("#chat-list-btn").on("click", function(event){
+		let chatListBox = document.getElementById('chat-list-box') 
+		if(chatListBox.style.display=='none'){
+			chatListBox.style.display = "block";
+		} else {
+			chatListBox.style.display = "none";
+		};
 	});
 });

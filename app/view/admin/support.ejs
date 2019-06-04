@@ -14,7 +14,7 @@
   <span id="user-support" hidden><%= user.support %></span>
   <span id="access-room" hidden><%= room %></span>
   <section>
-    <% if(serviceDesk>0){ %>
+    <% if(serviceDesk=='opened'){ %>
     <div class="box-1" id='serviceDesk-box'>
       <h4 class='underline-generic'>Caso tenha solucionado o problema feche o chamado.</h4>
       <div class="menu-box">

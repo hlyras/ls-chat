@@ -72,12 +72,12 @@ User.loadMessages = (room) => {
 };
 
 User.openServiceDeskCall = (id) => {
-	let query = "UPDATE lfsdb.users SET serviceDesk='1' WHERE id='"+id+"';";
+	let query = "UPDATE lfsdb.users SET serviceDesk='opened' WHERE id='"+id+"';";
 	return db(query);
 };
 
 User.closeServiceDeskCall = (room) => {
-	let query = "UPDATE lfsdb.users SET serviceDesk='0' WHERE id='"+room+"';";
+	let query = "UPDATE lfsdb.users SET serviceDesk='closed' WHERE id='"+room+"';";
 	return db(query);
 };
 
